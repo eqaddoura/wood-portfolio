@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>معرض أعمالي في الخشب والتصميم الداخلي</title>
+  <meta name="description" content="معرض أعمال في الأثاث الخشبي والتصميم الداخلي - اضغط لمشاهدة الصور" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --gold: #b89b72;
+      --gold-light: #cbb28a;
+      --dark: #1c1a17;
+      --dark-2: #262320;
+      --cream: #f5f0e8;
+      --text-muted: #d8cfc2;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Tajawal', sans-serif;
+      background: var(--dark);
+      color: var(--cream);
+      line-height: 1.7;
+    }
+    a { text-decoration: none; }
+
+    /* Header / Hero */
+    header {
+      text-align: center;
+      padding: 70px 20px 50px;
+      background: linear-gradient(160deg, #2b2620 0%, #1c1a17 100%);
+      border-bottom: 3px solid var(--gold);
+    }
+    header h1 {
+      font-size: clamp(28px, 5vw, 46px);
+      font-weight: 800;
+      color: var(--gold);
+      margin-bottom: 14px;
+    }
+    header p {
+      font-size: clamp(15px, 2.5vw, 20px);
+      color: var(--text-muted);
+      max-width: 640px;
+      margin: 0 auto;
+    }
+
+    /* Grid of sections */
+    .grid {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 50px 20px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 28px;
+    }
+    .card {
+      background: var(--dark-2);
+      border: 1px solid #38332c;
+      border-radius: 16px;
+      padding: 32px 28px;
+      display: flex;
+      flex-direction: column;
+      transition: transform .25s ease, border-color .25s ease, box-shadow .25s ease;
+    }
+    .card:hover {
+      transform: translateY(-6px);
+      border-color: var(--gold);
+      box-shadow: 0 12px 30px rgba(0,0,0,.4);
+    }
+    .card h2 {
+      font-size: 26px;
+      font-weight: 800;
+      color: var(--gold);
+      margin-bottom: 10px;
+    }
+    .card .sub {
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--cream);
+      margin-bottom: 12px;
+    }
+    .card .desc {
+      font-size: 15px;
+      color: var(--text-muted);
+      margin-bottom: 24px;
+      flex-grow: 1;
+    }
+    .btn {
+      display: inline-block;
+      background: var(--gold);
+      color: #1c1a17;
+      font-weight: 700;
+      font-size: 16px;
+      text-align: center;
+      padding: 13px 20px;
+      border-radius: 10px;
+      transition: background .2s ease;
+    }
+    .btn span { display: block; font-size: 13px; font-weight: 500; margin-top: 2px; }
+    .btn:hover { background: var(--gold-light); }
+
+    footer {
+      text-align: center;
+      padding: 40px 20px;
+      color: #8a8175;
+      font-size: 14px;
+      border-top: 1px solid #38332c;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>معرض أعمالي في الخشب والتصميم الداخلي</h1>
+    <p>تفاصيل صغيرة ... لكنها تصنع أول انطباع كبير. اضغط على أي قسم لمشاهدة الصور كاملة.</p>
+  </header>
+
+  <main class="grid">
+
+    <!-- 1. مدخل أنيق -->
+    <div class="card">
+      <h2>مدخل أنيق يرحب بك</h2>
+      <div class="sub">بإضاءة هادئة ولمسة دفء فريدة</div>
+      <div class="desc">تفاصيل صغيرة ... لكنها تصنع أول انطباع كبير.</div>
+      <a class="btn" href="https://drive.google.com/drive/folders/1Is-DSgo0VsOgMeE73fv4IoYzqH5kO6WQ?usp=sharing" target="_blank" rel="noopener">
+        اضغط هنا <span>لمشاهدة باقي الصور</span>
+      </a>
+    </div>
+
+    <!-- 2. غرفة ضيوف -->
+    <div class="card">
+      <h2>غرفة ضيوف</h2>
+      <div class="sub">تجمع بين الفخامة والدفء بأجمل توازن</div>
+      <div class="desc">إضاءة ناعمة وأثاث مريح يرحب بكل من يزور البيت.</div>
+      <a class="btn" href="https://drive.google.com/drive/folders/1SxgvpRwXFKcwgDwWcBRiMJWqMtQRVgwx" target="_blank" rel="noopener">
+        اضغط هنا <span>لمشاهدة باقي الصور</span>
+      </a>
+    </div>
+
+    <!-- 3. غرفة معيشة -->
+    <div class="card">
+      <h2>غرفة معيشة</h2>
+      <div class="sub">بتفاصيل ناعمة يخليك تحس إنك في بيتك من أول لحظة</div>
+      <div class="desc">ألوان هادئة تخلي المكان دافئ وراحة بعد يوم طويل.</div>
+      <a class="btn" href="https://drive.google.com/drive/folders/14WO8UPGiALemOoDRm0QYCBPeRa6aFMKb" target="_blank" rel="noopener">
+        اضغط هنا <span>لمشاهدة باقي الصور</span>
+      </a>
+    </div>
+
+    <!-- 4. طاولة -->
+    <div class="card">
+      <h2>طاولة</h2>
+      <div class="sub">تجمع العيلة والضحكة بكل لحظة</div>
+      <div class="desc">تصميم أنيق بخشب دافئ يضيف لمسة راحة لكل وجبة.</div>
+      <a class="btn" href="https://drive.google.com/drive/folders/1gVxNweck2xKxLDZSxMiILNdw9OWAbEly" target="_blank" rel="noopener">
+        اضغط هنا <span>لمشاهدة باقي الصور</span>
+      </a>
+    </div>
+
+    <!-- 5. مطبخ أنيق -->
+    <div class="card">
+      <h2>مطبخ أنيق</h2>
+      <div class="sub">يجمع بين العملية والجمال بكل تفصيلة</div>
+      <div class="desc">إضاءة ناعمة وألوان هادئة تخلي الطبخ متعة يومية.</div>
+      <a class="btn" href="https://drive.google.com/drive/folders/1W-5WQcTjhtaV-9iycmRAhk9pMd_kIwuq" target="_blank" rel="noopener">
+        اضغط هنا <span>لمشاهدة باقي الصور</span>
+      </a>
+    </div>
+
+    <!-- 6. غرفة نوم -->
+    <div class="card">
+      <h2>غرفة نوم</h2>
+      <div class="sub">تجمع بين الهدوء والفخامة بتفاصيلها البسيطة</div>
+      <div class="desc">تصميم يخليك تغرق بنوم مريح وإحساس راحة من أول نظرة.</div>
+      <a class="btn" href="https://drive.google.com/drive/folders/19QfjxdFtQhtUQsKKpc4PopW6TZdfNIaL" target="_blank" rel="noopener">
+        اضغط هنا <span>لمشاهدة باقي الصور</span>
+      </a>
+    </div>
+
+    <!-- 7. حمام -->
+    <div class="card">
+      <h2>حمام بتفاصيل بسيطة</h2>
+      <div class="sub">لكن الإحساس فيه فخم ومريح</div>
+      <div class="desc">إضاءة دافئة ولمسات خشبية تمنح المكان دفء وأناقة فريدة.</div>
+      <a class="btn" href="https://drive.google.com/drive/folders/1SfR4OkCvObcXDZsbrp-yA7PnoNY0-X1U" target="_blank" rel="noopener">
+        اضغط هنا <span>لمشاهدة باقي الصور</span>
+      </a>
+    </div>
+
+  </main>
+
+  <footer>
+    © معرض أعمالي في الخشب والتصميم الداخلي
+  </footer>
+</body>
+</html>
