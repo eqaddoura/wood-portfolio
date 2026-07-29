@@ -46,59 +46,66 @@
       margin: 0 auto;
     }
 
-    /* Grid of sections */
-    .grid {
+    /* Sections */
+    .sections {
       max-width: 1200px;
       margin: 0 auto;
-      padding: 50px 20px;
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 28px;
+      padding: 40px 20px 60px;
     }
-    .card {
+    .section {
       background: var(--dark-2);
       border: 1px solid #38332c;
       border-radius: 16px;
-      overflow: hidden;
-      display: flex;
-      flex-direction: column;
-      transition: transform .25s ease, border-color .25s ease, box-shadow .25s ease;
+      padding: 30px 28px 34px;
+      margin-bottom: 32px;
     }
-    .card:hover {
-      transform: translateY(-6px);
-      border-color: var(--gold);
-      box-shadow: 0 12px 30px rgba(0,0,0,.4);
-    }
-    .card .thumb {
-      width: 100%;
-      aspect-ratio: 4 / 3;
-      object-fit: cover;
-      display: block;
-      background: #322d27;
-    }
-    .card .body {
-      padding: 26px 26px 28px;
-      display: flex;
-      flex-direction: column;
-      flex-grow: 1;
-    }
-    .card h2 {
-      font-size: 26px;
+    .section h2 {
+      font-size: 28px;
       font-weight: 800;
       color: var(--gold);
-      margin-bottom: 10px;
+      margin-bottom: 8px;
     }
-    .card .sub {
+    .section .sub {
       font-size: 18px;
       font-weight: 700;
       color: var(--cream);
-      margin-bottom: 12px;
+      margin-bottom: 8px;
     }
-    .card .desc {
+    .section .desc {
       font-size: 15px;
       color: var(--text-muted);
-      margin-bottom: 24px;
-      flex-grow: 1;
+      margin-bottom: 22px;
+    }
+
+    /* Thumbnail gallery */
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+      gap: 12px;
+    }
+    .gallery img {
+      width: 100%;
+      aspect-ratio: 1 / 1;
+      object-fit: cover;
+      border-radius: 10px;
+      cursor: pointer;
+      background: #322d27;
+      transition: transform .2s ease, box-shadow .2s ease;
+    }
+    .gallery img:hover {
+      transform: scale(1.03);
+      box-shadow: 0 6px 18px rgba(0,0,0,.5);
+    }
+
+    /* Cover fallback (Drive button) */
+    .cover {
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      object-fit: cover;
+      border-radius: 12px;
+      display: block;
+      margin-bottom: 20px;
+      background: #322d27;
     }
     .btn {
       display: inline-block;
@@ -107,12 +114,14 @@
       font-weight: 700;
       font-size: 16px;
       text-align: center;
-      padding: 13px 20px;
+      padding: 13px 24px;
       border-radius: 10px;
       transition: background .2s ease;
     }
     .btn span { display: block; font-size: 13px; font-weight: 500; margin-top: 2px; }
     .btn:hover { background: var(--gold-light); }
+
+    .loading { color: #8a8175; font-size: 14px; }
 
     footer {
       text-align: center;
@@ -121,111 +130,187 @@
       font-size: 14px;
       border-top: 1px solid #38332c;
     }
+
+    /* Lightbox */
+    .lightbox {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,.92);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 1000;
+    }
+    .lightbox.open { display: flex; }
+    .lightbox img {
+      max-width: 92vw;
+      max-height: 86vh;
+      border-radius: 8px;
+      box-shadow: 0 10px 40px rgba(0,0,0,.6);
+    }
+    .lb-btn {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(184,155,114,.9);
+      color: #1c1a17;
+      border: none;
+      width: 52px;
+      height: 52px;
+      border-radius: 50%;
+      font-size: 26px;
+      font-weight: 700;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .lb-btn:hover { background: var(--gold); }
+    .lb-prev { right: 18px; }
+    .lb-next { left: 18px; }
+    .lb-close {
+      position: absolute;
+      top: 18px;
+      left: 18px;
+      background: rgba(184,155,114,.9);
+      color: #1c1a17;
+      border: none;
+      width: 46px;
+      height: 46px;
+      border-radius: 50%;
+      font-size: 24px;
+      cursor: pointer;
+    }
+    .lb-close:hover { background: var(--gold); }
+    .lb-counter {
+      position: absolute;
+      top: 24px;
+      right: 50%;
+      transform: translateX(50%);
+      color: var(--cream);
+      font-size: 15px;
+      background: rgba(0,0,0,.4);
+      padding: 4px 14px;
+      border-radius: 20px;
+    }
+    @media (max-width: 600px) {
+      .lb-btn { width: 44px; height: 44px; font-size: 22px; }
+    }
   </style>
 </head>
 <body>
   <header>
     <h1>معرض أعمالي في الخشب والتصميم الداخلي</h1>
-    <p>تفاصيل صغيرة ... لكنها تصنع أول انطباع كبير. اضغط على أي قسم لمشاهدة الصور كاملة.</p>
+    <p>تفاصيل صغيرة ... لكنها تصنع أول انطباع كبير. اضغط على أي صورة لمشاهدتها بالحجم الكامل.</p>
   </header>
 
-  <main class="grid">
-
-    <!-- 1. مدخل أنيق -->
-    <div class="card">
-      <img class="thumb" src="images/entrance.jpg" alt="مدخل أنيق" loading="lazy" />
-      <div class="body">
-        <h2>مدخل أنيق يرحب بك</h2>
-        <div class="sub">بإضاءة هادئة ولمسة دفء فريدة</div>
-        <div class="desc">تفاصيل صغيرة ... لكنها تصنع أول انطباع كبير.</div>
-        <a class="btn" href="https://drive.google.com/drive/folders/1Is-DSgo0VsOgMeE73fv4IoYzqH5kO6WQ?usp=sharing" target="_blank" rel="noopener">
-          اضغط هنا <span>لمشاهدة باقي الصور</span>
-        </a>
-      </div>
-    </div>
-
-    <!-- 2. غرفة ضيوف -->
-    <div class="card">
-      <img class="thumb" src="images/guest.jpg" alt="غرفة ضيوف" loading="lazy" />
-      <div class="body">
-        <h2>غرفة ضيوف</h2>
-        <div class="sub">تجمع بين الفخامة والدفء بأجمل توازن</div>
-        <div class="desc">إضاءة ناعمة وأثاث مريح يرحب بكل من يزور البيت.</div>
-        <a class="btn" href="https://drive.google.com/drive/folders/1SxgvpRwXFKcwgDwWcBRiMJWqMtQRVgwx" target="_blank" rel="noopener">
-          اضغط هنا <span>لمشاهدة باقي الصور</span>
-        </a>
-      </div>
-    </div>
-
-    <!-- 3. غرفة معيشة -->
-    <div class="card">
-      <img class="thumb" src="images/living.jpg" alt="غرفة معيشة" loading="lazy" />
-      <div class="body">
-        <h2>غرفة معيشة</h2>
-        <div class="sub">بتفاصيل ناعمة يخليك تحس إنك في بيتك من أول لحظة</div>
-        <div class="desc">ألوان هادئة تخلي المكان دافئ وراحة بعد يوم طويل.</div>
-        <a class="btn" href="https://drive.google.com/drive/folders/14WO8UPGiALemOoDRm0QYCBPeRa6aFMKb" target="_blank" rel="noopener">
-          اضغط هنا <span>لمشاهدة باقي الصور</span>
-        </a>
-      </div>
-    </div>
-
-    <!-- 4. طاولة -->
-    <div class="card">
-      <img class="thumb" src="images/dining.jpg" alt="طاولة" loading="lazy" />
-      <div class="body">
-        <h2>طاولة</h2>
-        <div class="sub">تجمع العيلة والضحكة بكل لحظة</div>
-        <div class="desc">تصميم أنيق بخشب دافئ يضيف لمسة راحة لكل وجبة.</div>
-        <a class="btn" href="https://drive.google.com/drive/folders/1gVxNweck2xKxLDZSxMiILNdw9OWAbEly" target="_blank" rel="noopener">
-          اضغط هنا <span>لمشاهدة باقي الصور</span>
-        </a>
-      </div>
-    </div>
-
-    <!-- 5. مطبخ أنيق -->
-    <div class="card">
-      <img class="thumb" src="images/kitchen.jpg" alt="مطبخ أنيق" loading="lazy" />
-      <div class="body">
-        <h2>مطبخ أنيق</h2>
-        <div class="sub">يجمع بين العملية والجمال بكل تفصيلة</div>
-        <div class="desc">إضاءة ناعمة وألوان هادئة تخلي الطبخ متعة يومية.</div>
-        <a class="btn" href="https://drive.google.com/drive/folders/1W-5WQcTjhtaV-9iycmRAhk9pMd_kIwuq" target="_blank" rel="noopener">
-          اضغط هنا <span>لمشاهدة باقي الصور</span>
-        </a>
-      </div>
-    </div>
-
-    <!-- 6. غرفة نوم -->
-    <div class="card">
-      <img class="thumb" src="images/bedroom.jpg" alt="غرفة نوم" loading="lazy" />
-      <div class="body">
-        <h2>غرفة نوم</h2>
-        <div class="sub">تجمع بين الهدوء والفخامة بتفاصيلها البسيطة</div>
-        <div class="desc">تصميم يخليك تغرق بنوم مريح وإحساس راحة من أول نظرة.</div>
-        <a class="btn" href="https://drive.google.com/drive/folders/19QfjxdFtQhtUQsKKpc4PopW6TZdfNIaL" target="_blank" rel="noopener">
-          اضغط هنا <span>لمشاهدة باقي الصور</span>
-        </a>
-      </div>
-    </div>
-
-    <!-- 7. حمام -->
-    <div class="card">
-      <img class="thumb" src="images/bathroom.jpg" alt="حمام" loading="lazy" />
-      <div class="body">
-        <h2>حمام بتفاصيل بسيطة</h2>
-        <div class="sub">لكن الإحساس فيه فخم ومريح</div>
-        <div class="desc">إضاءة دافئة ولمسات خشبية تمنح المكان دفء وأناقة فريدة.</div>
-        <a class="btn" href="https://drive.google.com/drive/folders/1SfR4OkCvObcXDZsbrp-yA7PnoNY0-X1U" target="_blank" rel="noopener">
-          اضغط هنا <span>لمشاهدة باقي الصور</span>
-        </a>
-      </div>
-    </div>
-
-  </main>
+  <main class="sections" id="sections"></main>
 
   <footer>
     © معرض أعمالي في الخشب والتصميم الداخلي
   </footer>
+
+  <!-- Lightbox -->
+  <div class="lightbox" id="lightbox">
+    <button class="lb-close" id="lbClose" aria-label="إغلاق">&times;</button>
+    <button class="lb-btn lb-prev" id="lbPrev" aria-label="السابق">&#8250;</button>
+    <img id="lbImg" src="" alt="" />
+    <button class="lb-btn lb-next" id="lbNext" aria-label="التالي">&#8249;</button>
+    <div class="lb-counter" id="lbCounter"></div>
+  </div>
+
+  <script>
+    // ===== Sections config =====
+    // folder = subfolder under images/ that holds photos + list.json
+    // drive  = fallback Google Drive folder (used only if list.json not found)
+    // cover  = fallback cover image (used only if list.json not found)
+    const SECTIONS = [
+      { folder: "entrance", title: "مدخل أنيق يرحب بك", sub: "بإضاءة هادئة ولمسة دفء فريدة", desc: "تفاصيل صغيرة ... لكنها تصنع أول انطباع كبير.", cover: "images/entrance.jpg", drive: "https://drive.google.com/drive/folders/1Is-DSgo0VsOgMeE73fv4IoYzqH5kO6WQ?usp=sharing" },
+      { folder: "guest",    title: "غرفة ضيوف", sub: "تجمع بين الفخامة والدفء بأجمل توازن", desc: "إضاءة ناعمة وأثاث مريح يرحب بكل من يزور البيت.", cover: "images/guest.jpg", drive: "https://drive.google.com/drive/folders/1SxgvpRwXFKcwgDwWcBRiMJWqMtQRVgwx" },
+      { folder: "living",   title: "غرفة معيشة", sub: "بتفاصيل ناعمة يخليك تحس إنك في بيتك من أول لحظة", desc: "ألوان هادئة تخلي المكان دافئ وراحة بعد يوم طويل.", cover: "images/living.jpg", drive: "https://drive.google.com/drive/folders/14WO8UPGiALemOoDRm0QYCBPeRa6aFMKb" },
+      { folder: "dining",   title: "طاولة", sub: "تجمع العيلة والضحكة بكل لحظة", desc: "تصميم أنيق بخشب دافئ يضيف لمسة راحة لكل وجبة.", cover: "images/dining.jpg", drive: "https://drive.google.com/drive/folders/1gVxNweck2xKxLDZSxMiILNdw9OWAbEly" },
+      { folder: "kitchen",  title: "مطبخ أنيق", sub: "يجمع بين العملية والجمال بكل تفصيلة", desc: "إضاءة ناعمة وألوان هادئة تخلي الطبخ متعة يومية.", cover: "images/kitchen.jpg", drive: "https://drive.google.com/drive/folders/1W-5WQcTjhtaV-9iycmRAhk9pMd_kIwuq" },
+      { folder: "bedroom",  title: "غرفة نوم", sub: "تجمع بين الهدوء والفخامة بتفاصيلها البسيطة", desc: "تصميم يخليك تغرق بنوم مريح وإحساس راحة من أول نظرة.", cover: "images/bedroom.jpg", drive: "https://drive.google.com/drive/folders/19QfjxdFtQhtUQsKKpc4PopW6TZdfNIaL" },
+      { folder: "bathroom", title: "حمام بتفاصيل بسيطة", sub: "لكن الإحساس فيه فخم ومريح", desc: "إضاءة دافئة ولمسات خشبية تمنح المكان دفء وأناقة فريدة.", cover: "images/bathroom.jpg", drive: "https://drive.google.com/drive/folders/1SfR4OkCvObcXDZsbrp-yA7PnoNY0-X1U" }
+    ];
+
+    const sectionsEl = document.getElementById("sections");
+
+    // Lightbox state
+    let currentImages = [];
+    let currentIndex = 0;
+    const lb = document.getElementById("lightbox");
+    const lbImg = document.getElementById("lbImg");
+    const lbCounter = document.getElementById("lbCounter");
+
+    function openLightbox(images, index) {
+      currentImages = images;
+      currentIndex = index;
+      showImage();
+      lb.classList.add("open");
+      document.body.style.overflow = "hidden";
+    }
+    function showImage() {
+      lbImg.src = currentImages[currentIndex];
+      lbCounter.textContent = (currentIndex + 1) + " / " + currentImages.length;
+    }
+    function closeLightbox() {
+      lb.classList.remove("open");
+      document.body.style.overflow = "";
+    }
+    function next() { currentIndex = (currentIndex + 1) % currentImages.length; showImage(); }
+    function prev() { currentIndex = (currentIndex - 1 + currentImages.length) % currentImages.length; showImage(); }
+
+    document.getElementById("lbClose").onclick = closeLightbox;
+    document.getElementById("lbNext").onclick = next;
+    document.getElementById("lbPrev").onclick = prev;
+    lb.onclick = (e) => { if (e.target === lb) closeLightbox(); };
+    document.addEventListener("keydown", (e) => {
+      if (!lb.classList.contains("open")) return;
+      if (e.key === "Escape") closeLightbox();
+      // RTL: right arrow = previous visually
+      if (e.key === "ArrowLeft") next();
+      if (e.key === "ArrowRight") prev();
+    });
+
+    // Build each section
+    SECTIONS.forEach((sec) => {
+      const el = document.createElement("section");
+      el.className = "section";
+      el.innerHTML =
+        '<h2>' + sec.title + '</h2>' +
+        '<div class="sub">' + sec.sub + '</div>' +
+        '<div class="desc">' + sec.desc + '</div>' +
+        '<div class="content"><p class="loading">جاري التحميل ...</p></div>';
+      sectionsEl.appendChild(el);
+      const content = el.querySelector(".content");
+
+      // Try to load in-site gallery from list.json
+      fetch("images/" + sec.folder + "/list.json", { cache: "no-store" })
+        .then((r) => { if (!r.ok) throw new Error("no list"); return r.json(); })
+        .then((files) => {
+          if (!Array.isArray(files) || files.length === 0) throw new Error("empty");
+          const paths = files.map((f) => "images/" + sec.folder + "/" + f);
+          const gallery = document.createElement("div");
+          gallery.className = "gallery";
+          paths.forEach((src, i) => {
+            const img = document.createElement("img");
+            img.src = src;
+            img.loading = "lazy";
+            img.alt = sec.title;
+            img.onclick = () => openLightbox(paths, i);
+            gallery.appendChild(img);
+          });
+          content.innerHTML = "";
+          content.appendChild(gallery);
+        })
+        .catch(() => {
+          // Fallback: cover image + Google Drive button
+          content.innerHTML =
+            '<img class="cover" src="' + sec.cover + '" alt="' + sec.title + '" loading="lazy" />' +
+            '<a class="btn" href="' + sec.drive + '" target="_blank" rel="noopener">اضغط هنا <span>لمشاهدة باقي الصور</span></a>';
+        });
+    });
+  </script>
 </body>
 </html>
