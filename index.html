@@ -59,7 +59,7 @@
       background: var(--dark-2);
       border: 1px solid #38332c;
       border-radius: 16px;
-      padding: 32px 28px;
+      overflow: hidden;
       display: flex;
       flex-direction: column;
       transition: transform .25s ease, border-color .25s ease, box-shadow .25s ease;
@@ -68,6 +68,19 @@
       transform: translateY(-6px);
       border-color: var(--gold);
       box-shadow: 0 12px 30px rgba(0,0,0,.4);
+    }
+    .card .thumb {
+      width: 100%;
+      aspect-ratio: 4 / 3;
+      object-fit: cover;
+      display: block;
+      background: #322d27;
+    }
+    .card .body {
+      padding: 26px 26px 28px;
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1;
     }
     .card h2 {
       font-size: 26px;
@@ -120,72 +133,93 @@
 
     <!-- 1. مدخل أنيق -->
     <div class="card">
-      <h2>مدخل أنيق يرحب بك</h2>
-      <div class="sub">بإضاءة هادئة ولمسة دفء فريدة</div>
-      <div class="desc">تفاصيل صغيرة ... لكنها تصنع أول انطباع كبير.</div>
-      <a class="btn" href="https://drive.google.com/drive/folders/1Is-DSgo0VsOgMeE73fv4IoYzqH5kO6WQ?usp=sharing" target="_blank" rel="noopener">
-        اضغط هنا <span>لمشاهدة باقي الصور</span>
-      </a>
+      <img class="thumb" src="images/entrance.jpg" alt="مدخل أنيق" loading="lazy" />
+      <div class="body">
+        <h2>مدخل أنيق يرحب بك</h2>
+        <div class="sub">بإضاءة هادئة ولمسة دفء فريدة</div>
+        <div class="desc">تفاصيل صغيرة ... لكنها تصنع أول انطباع كبير.</div>
+        <a class="btn" href="https://drive.google.com/drive/folders/1Is-DSgo0VsOgMeE73fv4IoYzqH5kO6WQ?usp=sharing" target="_blank" rel="noopener">
+          اضغط هنا <span>لمشاهدة باقي الصور</span>
+        </a>
+      </div>
     </div>
 
     <!-- 2. غرفة ضيوف -->
     <div class="card">
-      <h2>غرفة ضيوف</h2>
-      <div class="sub">تجمع بين الفخامة والدفء بأجمل توازن</div>
-      <div class="desc">إضاءة ناعمة وأثاث مريح يرحب بكل من يزور البيت.</div>
-      <a class="btn" href="https://drive.google.com/drive/folders/1SxgvpRwXFKcwgDwWcBRiMJWqMtQRVgwx" target="_blank" rel="noopener">
-        اضغط هنا <span>لمشاهدة باقي الصور</span>
-      </a>
+      <img class="thumb" src="images/guest.jpg" alt="غرفة ضيوف" loading="lazy" />
+      <div class="body">
+        <h2>غرفة ضيوف</h2>
+        <div class="sub">تجمع بين الفخامة والدفء بأجمل توازن</div>
+        <div class="desc">إضاءة ناعمة وأثاث مريح يرحب بكل من يزور البيت.</div>
+        <a class="btn" href="https://drive.google.com/drive/folders/1SxgvpRwXFKcwgDwWcBRiMJWqMtQRVgwx" target="_blank" rel="noopener">
+          اضغط هنا <span>لمشاهدة باقي الصور</span>
+        </a>
+      </div>
     </div>
 
     <!-- 3. غرفة معيشة -->
     <div class="card">
-      <h2>غرفة معيشة</h2>
-      <div class="sub">بتفاصيل ناعمة يخليك تحس إنك في بيتك من أول لحظة</div>
-      <div class="desc">ألوان هادئة تخلي المكان دافئ وراحة بعد يوم طويل.</div>
-      <a class="btn" href="https://drive.google.com/drive/folders/14WO8UPGiALemOoDRm0QYCBPeRa6aFMKb" target="_blank" rel="noopener">
-        اضغط هنا <span>لمشاهدة باقي الصور</span>
-      </a>
+      <img class="thumb" src="images/living.jpg" alt="غرفة معيشة" loading="lazy" />
+      <div class="body">
+        <h2>غرفة معيشة</h2>
+        <div class="sub">بتفاصيل ناعمة يخليك تحس إنك في بيتك من أول لحظة</div>
+        <div class="desc">ألوان هادئة تخلي المكان دافئ وراحة بعد يوم طويل.</div>
+        <a class="btn" href="https://drive.google.com/drive/folders/14WO8UPGiALemOoDRm0QYCBPeRa6aFMKb" target="_blank" rel="noopener">
+          اضغط هنا <span>لمشاهدة باقي الصور</span>
+        </a>
+      </div>
     </div>
 
     <!-- 4. طاولة -->
     <div class="card">
-      <h2>طاولة</h2>
-      <div class="sub">تجمع العيلة والضحكة بكل لحظة</div>
-      <div class="desc">تصميم أنيق بخشب دافئ يضيف لمسة راحة لكل وجبة.</div>
-      <a class="btn" href="https://drive.google.com/drive/folders/1gVxNweck2xKxLDZSxMiILNdw9OWAbEly" target="_blank" rel="noopener">
-        اضغط هنا <span>لمشاهدة باقي الصور</span>
-      </a>
+      <img class="thumb" src="images/dining.jpg" alt="طاولة" loading="lazy" />
+      <div class="body">
+        <h2>طاولة</h2>
+        <div class="sub">تجمع العيلة والضحكة بكل لحظة</div>
+        <div class="desc">تصميم أنيق بخشب دافئ يضيف لمسة راحة لكل وجبة.</div>
+        <a class="btn" href="https://drive.google.com/drive/folders/1gVxNweck2xKxLDZSxMiILNdw9OWAbEly" target="_blank" rel="noopener">
+          اضغط هنا <span>لمشاهدة باقي الصور</span>
+        </a>
+      </div>
     </div>
 
     <!-- 5. مطبخ أنيق -->
     <div class="card">
-      <h2>مطبخ أنيق</h2>
-      <div class="sub">يجمع بين العملية والجمال بكل تفصيلة</div>
-      <div class="desc">إضاءة ناعمة وألوان هادئة تخلي الطبخ متعة يومية.</div>
-      <a class="btn" href="https://drive.google.com/drive/folders/1W-5WQcTjhtaV-9iycmRAhk9pMd_kIwuq" target="_blank" rel="noopener">
-        اضغط هنا <span>لمشاهدة باقي الصور</span>
-      </a>
+      <img class="thumb" src="images/kitchen.jpg" alt="مطبخ أنيق" loading="lazy" />
+      <div class="body">
+        <h2>مطبخ أنيق</h2>
+        <div class="sub">يجمع بين العملية والجمال بكل تفصيلة</div>
+        <div class="desc">إضاءة ناعمة وألوان هادئة تخلي الطبخ متعة يومية.</div>
+        <a class="btn" href="https://drive.google.com/drive/folders/1W-5WQcTjhtaV-9iycmRAhk9pMd_kIwuq" target="_blank" rel="noopener">
+          اضغط هنا <span>لمشاهدة باقي الصور</span>
+        </a>
+      </div>
     </div>
 
     <!-- 6. غرفة نوم -->
     <div class="card">
-      <h2>غرفة نوم</h2>
-      <div class="sub">تجمع بين الهدوء والفخامة بتفاصيلها البسيطة</div>
-      <div class="desc">تصميم يخليك تغرق بنوم مريح وإحساس راحة من أول نظرة.</div>
-      <a class="btn" href="https://drive.google.com/drive/folders/19QfjxdFtQhtUQsKKpc4PopW6TZdfNIaL" target="_blank" rel="noopener">
-        اضغط هنا <span>لمشاهدة باقي الصور</span>
-      </a>
+      <img class="thumb" src="images/bedroom.jpg" alt="غرفة نوم" loading="lazy" />
+      <div class="body">
+        <h2>غرفة نوم</h2>
+        <div class="sub">تجمع بين الهدوء والفخامة بتفاصيلها البسيطة</div>
+        <div class="desc">تصميم يخليك تغرق بنوم مريح وإحساس راحة من أول نظرة.</div>
+        <a class="btn" href="https://drive.google.com/drive/folders/19QfjxdFtQhtUQsKKpc4PopW6TZdfNIaL" target="_blank" rel="noopener">
+          اضغط هنا <span>لمشاهدة باقي الصور</span>
+        </a>
+      </div>
     </div>
 
     <!-- 7. حمام -->
     <div class="card">
-      <h2>حمام بتفاصيل بسيطة</h2>
-      <div class="sub">لكن الإحساس فيه فخم ومريح</div>
-      <div class="desc">إضاءة دافئة ولمسات خشبية تمنح المكان دفء وأناقة فريدة.</div>
-      <a class="btn" href="https://drive.google.com/drive/folders/1SfR4OkCvObcXDZsbrp-yA7PnoNY0-X1U" target="_blank" rel="noopener">
-        اضغط هنا <span>لمشاهدة باقي الصور</span>
-      </a>
+      <img class="thumb" src="images/bathroom.jpg" alt="حمام" loading="lazy" />
+      <div class="body">
+        <h2>حمام بتفاصيل بسيطة</h2>
+        <div class="sub">لكن الإحساس فيه فخم ومريح</div>
+        <div class="desc">إضاءة دافئة ولمسات خشبية تمنح المكان دفء وأناقة فريدة.</div>
+        <a class="btn" href="https://drive.google.com/drive/folders/1SfR4OkCvObcXDZsbrp-yA7PnoNY0-X1U" target="_blank" rel="noopener">
+          اضغط هنا <span>لمشاهدة باقي الصور</span>
+        </a>
+      </div>
     </div>
 
   </main>
